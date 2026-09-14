@@ -1,43 +1,576 @@
-*{
+/* =========================================
+   RESET
+========================================= */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-header{
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    background-color: #080808;
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
     width: 100%;
     height: 80px;
-    background-color: black;
+
+    background-color: #050505;
+
+    border-bottom: 1px solid #202020;
 }
+
+
+/* =========================================
+   MAIN
+========================================= */
 
 main {
     width: 100%;
     height: 800px;
 }
-footer{
+
+
+/* =========================================
+   VENTA
+========================================= */
+
+.venta {
+    width: 100%;
+    height: 800px;
+
+    background-color: #0a0a0a;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   VISTAS
+========================================= */
+
+.vistas {
+    width: 50%;
+    height: 800px;
+
+    border: 1px solid #292929;
+
+    background-color: #0d0d0d;
+
+    overflow: auto;
+
+    animation: aparecerIzquierda 0.7s ease-out;
+}
+
+
+/* =========================================
+   TABLA
+========================================= */
+
+.vistas table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+
+.vistas thead {
+    background-color: #151515;
+}
+
+
+.vistas th {
+    height: 45px;
+
+    padding: 0 10px;
+
+    color: #bdbdbd;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    border-bottom: 1px solid #292929;
+}
+
+
+.vistas td {
+    padding: 12px 10px;
+
+    border-bottom: 1px solid #202020;
+
+    color: #dddddd;
+}
+
+
+.vistas tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+
+.vistas tbody tr:hover {
+    background-color: #171717;
+}
+
+
+/* =========================================
+   FORMULARIO
+========================================= */
+
+.formularioVenta {
+    width: 50%;
+    height: 800px;
+
+    float: right;
+
+    border: 1px solid #292929;
+
+    background-color: #101010;
+
+    padding: 60px 45px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.35);
+
+    animation: aparecerDerecha 0.7s ease-out;
+}
+
+
+/* =========================================
+   LINEA ROJA DECORATIVA
+========================================= */
+
+.formularioVenta::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background-color: #e00000;
+
+    transform: scaleY(0);
+
+    transform-origin: bottom;
+
+    animation: lineaEntrada 0.8s ease forwards;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.formularioVenta form {
+    width: 100%;
+
+    animation: formularioEntrada 0.7s ease-out;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+    width: 100%;
+
+    animation: campoEntrada 0.6s ease-out backwards;
+}
+
+
+/* Animación escalonada */
+
+.campo:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.campo:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.campo:nth-child(3) {
+    animation-delay: 0.35s;
+}
+
+.campo:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.formularioVenta label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #dddddd;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.formularioVenta input {
+    width: 100%;
+    height: 48px;
+
+    padding: 0 15px;
+
+    margin-bottom: 20px;
+
+    background-color: #181818;
+
+    border: 1px solid #303030;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.formularioVenta input::placeholder {
+    color: #626262;
+
+    transition: color 0.2s ease;
+}
+
+
+/* =========================================
+   INPUT HOVER
+========================================= */
+
+.formularioVenta input:hover {
+    border-color: #484848;
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.formularioVenta input:focus {
+    background-color: #1c1c1c;
+
+    border-color: #e00000;
+
+    box-shadow:
+        0 0 0 2px rgba(224, 0, 0, 0.10),
+        0 5px 20px rgba(0, 0, 0, 0.25);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   PLACEHOLDER AL HACER FOCUS
+========================================= */
+
+.formularioVenta input:focus::placeholder {
+    color: #858585;
+}
+
+
+/* =========================================
+   LABEL CUANDO INPUT TIENE FOCUS
+========================================= */
+
+.formularioVenta input:focus {
+    border-color: #e00000;
+}
+
+
+/* =========================================
+   BOTÓN
+========================================= */
+
+.formularioVenta button {
+    width: 100%;
+    height: 48px;
+
+    margin-top: 2px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background-color: #d90000;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    animation: botonEntrada 0.6s ease-out 0.55s backwards;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================
+   BRILLO DEL BOTÓN
+========================================= */
+
+.formularioVenta button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+    );
+
+    transition: left 0.5s ease;
+}
+
+
+/* =========================================
+   BOTÓN HOVER
+========================================= */
+
+.formularioVenta button:hover {
+    background-color: #f00000;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(217, 0, 0, 0.25);
+}
+
+
+.formularioVenta button:hover::before {
+    left: 100%;
+}
+
+
+/* =========================================
+   BOTÓN ACTIVE
+========================================= */
+
+.formularioVenta button:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
     width: 100%;
     height: 80px;
-    background-color: black;
+
+    background-color: #050505;
+
+    border-top: 1px solid #202020;
 }
 
-.venta{
-    width: 100%;
-    height: 800px;
-    background-color: rgb(189, 1, 1);
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+
+
+/* Formulario entra desde la derecha */
+
+@keyframes aparecerDerecha {
+
+    from {
+        opacity: 0;
+
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateX(0);
+    }
+
 }
 
-.formularioVenta{
-    width: 50%;
-    height: 800px;
-    float: right;
-    border: 2px solid white;
-    background-color: rgb(141, 2, 2);
+
+/* Vistas entra desde la izquierda */
+
+@keyframes aparecerIzquierda {
+
+    from {
+        opacity: 0;
+
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateX(0);
+    }
 
 }
 
-.vistas{
-    width: 50%;
-    height: 800px;
-    border: 2px solid white;
+
+/* Formulario */
+
+@keyframes formularioEntrada {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Campos */
+
+@keyframes campoEntrada {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Botón */
+
+@keyframes botonEntrada {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Línea roja */
+
+@keyframes lineaEntrada {
+
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+
+}
+
+
+/* =========================================
+   ACCESIBILIDAD
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
 
 }
