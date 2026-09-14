@@ -20,5 +20,5 @@ formulario.addEventListener("submit", function (event){
     listProducts.push(NewProduct)
     resultContent.style.display = "block";
     updateTable();
-    form.reset();
+    formulario.reset();
 });
