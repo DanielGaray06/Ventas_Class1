@@ -53,15 +53,8 @@ function updateTable(){
            <td>${product.precio}</td>
            <td>${product.cantidad}</td>
            <td>${product.total}</td>
-       `;
+       `
        tableBody.appendChild(row);
-
+       
     })
-}
-
-function totalCalculate(){
-    listProducts.forEach(function(product){
-        product.total = product.precio * product.cantidad;
-    });
-    updateTable();
 }
