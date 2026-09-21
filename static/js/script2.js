@@ -7,6 +7,10 @@ const inputPrecio = document.getElementById("precio")
 const inputCantidad = document.getElementById("cantidad")
 const resultContent = document.getElementById("result")
 const tableBody = document.getElementById("tableBody")
+
+const botonAgregar = document.getElementById('botonAgregar')
+const botonCancelar = document.getElementById('botonCancelar')
+
 const listProducts = [];
 let indiceEditar = -1;
 
@@ -54,7 +58,7 @@ formulario.addEventListener("submit", function (event){
 //Mostrar Productos en la Tabla
 function updateTable(){
     tableBody.innerHTML = ""
-    listProducts.forEach(function (product) {
+    listProducts.forEach(function (product, indice) {
        const row = document.createElement("tr");
        row.innerHTML = `
            <td>${product.codigo}</td>
@@ -62,8 +66,41 @@ function updateTable(){
            <td>${product.precio}</td>
            <td>${product.cantidad}</td>
            <td>${product.total}</td>
+           <td>
+                <button type="button" class="botonEditar" onclick="editarProducto(${indice})">
+                    Editar
+                </button>
+           </td>
        `
        tableBody.appendChild(row);
        
+    })
+}
+
+function calcularTotal(){
+    listProducts.forEach(function(product){
+        product.total = product.precio * product.cantidad;
+    })
+}
+
+function editarProducto(indice){
+    indiceEditar= indice
+    const product = listProducts[indice];
+    inputCodigo.value = product.codigo
+    inputNombre.value = product.nombre
+    inputPrecio.value = product.precio
+    inputCantidad.value = product.cantidad
+
+    botonAgregar.textContent= 'Actualizar';
+    botonCancelar.style.display= 'onclck';
+    inputCodigo.focus()
+}
+
+if (botonCancelar){
+    botonCancelar.addEventListener('click',function(){
+        formulario.reset();
+        indiceEditar= -1;
+        botonAgregar.textContent= 'Agregar';
+        botonCancelar.style.display= 'none';
     })
 }
